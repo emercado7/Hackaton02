@@ -65,12 +65,7 @@ public class ContactTableApp extends JFrame {
 
         // --- LÓGICA AGREGAR ---
         btnAdd.addActionListener(e -> {
-
-            // 2. Cerrar esta ventana de bienvenida
-
-            // 3. Abrir la app principal pasándole el tamaño
             new AddContact().setVisible(true);
-
         });
 
         updateStatus();

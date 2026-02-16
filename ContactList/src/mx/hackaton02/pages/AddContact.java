@@ -80,14 +80,9 @@ public class AddContact extends JFrame {
 
         // Lógica del botón
         btnStart.addActionListener(e -> {
-            // 1. Obtener el valor del spinner
             int name = nameField.getColumns();
 
-            // 2. Cerrar esta ventana de bienvenida
             dispose();
-
-            // 3. Abrir la app principal pasándole el tamaño
-            // new ContactTableApp(name).setVisible(true);
         });
     }
 }
