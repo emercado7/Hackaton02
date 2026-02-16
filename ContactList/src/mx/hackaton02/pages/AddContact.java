@@ -20,7 +20,7 @@ public class AddContact extends JFrame {
 
     public AddContact() {
         setTitle("Añadir Contacto");
-        setSize(350, 200);
+        setSize(400, 250);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null); // Centrar en pantalla
         setLayout(new BorderLayout());
@@ -33,20 +33,38 @@ public class AddContact extends JFrame {
         JLabel lblTitle = new JLabel("Página de detalles de contactos", SwingConstants.CENTER);
         lblTitle.setFont(new Font("Segoe UI Emoji", Font.BOLD, 14));
         centerPanel.add(lblTitle);
+        centerPanel.setBackground(new Color(220, 245, 244));
 
         // Panel de atributos de contacto
-        JPanel contactPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 20, 10));
-        contactPanel.add(new JLabel("Nombre:"));
-        nameField = new JTextField(20);
-        contactPanel.add(nameField);
 
-        contactPanel.add(new JLabel("Clave de País"));
+        JPanel contactPanel = new JPanel();
+        contactPanel.setLayout(new BoxLayout(contactPanel, BoxLayout.Y_AXIS));
+        contactPanel.setBackground(new Color(220,245,244));
+
+        // Fila 1
+        JPanel row1 = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 5));
+        row1.setOpaque(false);
+        row1.add(new JLabel("Nombre:"));
+        nameField = new JTextField(15);
+        row1.add(nameField);
+
+        // Fila 2
+        JPanel row2 = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 5));
+        row2.setOpaque(false);
+        row2.add(new JLabel("Clave de País:"));
         JComboBox<String> prefixCombo = new JComboBox<>(countryCodes);
-        contactPanel.add(prefixCombo);
+        row2.add(prefixCombo);
 
-        contactPanel.add(new JLabel("Número:"));
-        numberField = new JTextField(20);
-        contactPanel.add(numberField);
+        // Fila 3
+        JPanel row3 = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 5));
+        row3.setOpaque(false);
+        row3.add(new JLabel("Número:"));
+        numberField = new JTextField(15);
+        row3.add(numberField);
+
+        contactPanel.add(row1);
+        contactPanel.add(row2);
+        contactPanel.add(row3);
 
         // Usamos JSpinner en lugar de TextField para forzar números
 
@@ -54,8 +72,8 @@ public class AddContact extends JFrame {
 
         // Botón de Inicio
         JButton btnStart = new JButton("Agregar Contacto");
-        btnStart.setFont(new Font("Arial", Font.BOLD, 12));
-        btnStart.setBackground(new Color(70, 130, 180)); // Azul acero
+        btnStart.setFont(new Font("Segoe UI Emoji", Font.BOLD, 15));
+        btnStart.setBackground(new Color(27, 43, 92));
         btnStart.setForeground(Color.WHITE);
 
         add(btnStart, BorderLayout.SOUTH);
