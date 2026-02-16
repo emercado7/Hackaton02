@@ -9,7 +9,7 @@ public class ContactManager extends JFrame {
     // Logic Variables
     private ArrayList<String> contacts;
     private final int MAX_CONTACTS = 10;
-
+    private SearchService searchService = new SearchService();
     // GUI Components
     private JTextField nameField;
     private JTextArea displayArea;
@@ -93,6 +93,15 @@ public class ContactManager extends JFrame {
         btnList.addActionListener(e -> listContacts());
 
         // 3. SEARCH CONTACT
+        //----Conecta con el método de buscaContacto()----
+        btnSearch.addActionListener(e -> {
+            String name = nameField.getText();
+            String result = searchService.buscaContacto(contacts, name);
+            displayArea.setText(result);
+        });
+
+        //Lo que estaba primero en el codigo de borrador:
+        /*
         btnSearch.addActionListener(e -> {
             String name = nameField.getText().trim();
             if (contacts.contains(name)) {
@@ -100,7 +109,7 @@ public class ContactManager extends JFrame {
             } else {
                 displayArea.setText("Not Found: " + name + " is not in the list.");
             }
-        });
+        }); */
 
         // 4. DELETE CONTACT
         btnDelete.addActionListener(e -> {
