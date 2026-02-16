@@ -90,7 +90,10 @@ public class ContactManager extends JFrame {
         });
 
         // 2. LIST CONTACTS
-        btnList.addActionListener(e -> listContacts());
+        btnList.addActionListener(e -> {
+            displayArea.setText(List.ordenarYContar(contacts));
+        });
+
 
         // 3. SEARCH CONTACT
         btnSearch.addActionListener(e -> {
