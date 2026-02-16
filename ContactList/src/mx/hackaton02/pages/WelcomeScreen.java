@@ -8,8 +8,8 @@ import java.awt.*;
 public class WelcomeScreen extends JFrame {
 
     public WelcomeScreen() {
-        setTitle("Setup");
-        setSize(350, 200);
+        setTitle("Agenda");
+        setSize(500, 250);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null); // Centrar en pantalla
         setLayout(new BorderLayout());
@@ -17,14 +17,17 @@ public class WelcomeScreen extends JFrame {
         // Panel Central
         JPanel centerPanel = new JPanel(new GridLayout(3, 1, 10, 10));
         centerPanel.setBorder(BorderFactory.createEmptyBorder(20, 40, 20, 40));
+        centerPanel.setBackground(new Color(220, 245, 244));
 
-        JLabel lblTitle = new JLabel("Contact Manager Setup", SwingConstants.CENTER);
-        lblTitle.setFont(new Font("Arial", Font.BOLD, 16));
+        JLabel lblTitle = new JLabel(" \uD83D\uDCD3 Bienvenido a tu agenda", SwingConstants.CENTER);
+        lblTitle.setFont(new Font("Segoe UI Emoji", Font.BOLD, 20));
 
-        JLabel lblAsk = new JLabel("Enter contact list size:", SwingConstants.CENTER);
+        JLabel lblAsk = new JLabel("\uD83D\uDD8B\uFE0F Indica la cantidad de contactos que deseas tener:", SwingConstants.CENTER);
+        lblAsk.setFont(new Font("Segoe UI Emoji", Font.BOLD, 15));
 
         // Usamos JSpinner en lugar de TextField para forzar números
         JSpinner numberSpinner = new JSpinner(new SpinnerNumberModel(10, 1, 100, 1));
+        numberSpinner.setFont(new Font("Arial", Font.BOLD, 15));
 
         centerPanel.add(lblTitle);
         centerPanel.add(lblAsk);
@@ -33,9 +36,9 @@ public class WelcomeScreen extends JFrame {
         add(centerPanel, BorderLayout.CENTER);
 
         // Botón de Inicio
-        JButton btnStart = new JButton("Launch Application");
-        btnStart.setFont(new Font("Arial", Font.BOLD, 12));
-        btnStart.setBackground(new Color(70, 130, 180)); // Azul acero
+        JButton btnStart = new JButton("\uD83D\uDCD6 Abrir mi agenda");
+        btnStart.setFont(new Font("Segoe UI Emoji", Font.BOLD, 15));
+        btnStart.setBackground(new Color(27, 43, 92));
         btnStart.setForeground(Color.WHITE);
 
         add(btnStart, BorderLayout.SOUTH);
