@@ -101,7 +101,7 @@ public class ContactManager extends JFrame {
                 return;
             }
 
-            agenda.addContact(name,number);
+            agenda.añadirContacto(name,number);
             nameField.setText("");
             numberField.setText("");
             updateStatus("Added: " + name);

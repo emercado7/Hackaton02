@@ -12,7 +12,7 @@ public class Agenda {
         agenda = new TreeMap<>();
     }
 
-    public void addContact(String name, String number){
+    public void añadirContacto(String name, String number){
         agenda.put(name, number);
     }
 
