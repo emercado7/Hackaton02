@@ -19,14 +19,14 @@ public class ContactTableApp extends JFrame {
     public ContactTableApp(int limit) {
         this.maxContacts = limit;
 
-        setTitle("Contact Manager");
+        setTitle("Tu Agenda");
         setSize(700, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(new BorderLayout());
 
         // --- CONFIGURACIÓN DE TABLA ---
-        String[] columnNames = {"Contact Name", "Modify", "Delete"};
+        String[] columnNames = {"Nombre de contacto", "Modificar", "Borrar"};
 
         tableModel = new DefaultTableModel(columnNames, 0) {
             @Override
@@ -40,21 +40,21 @@ public class ContactTableApp extends JFrame {
         table.getTableHeader().setReorderingAllowed(false);
 
         // Renderers y Editors para botones
-        table.getColumn("Modify").setCellRenderer(new ButtonRenderer());
-        table.getColumn("Modify").setCellEditor(new ButtonEditor(new JCheckBox(), "Modify"));
+        table.getColumn("Modificar").setCellRenderer(new ButtonRenderer());
+        table.getColumn("Modificar").setCellEditor(new ButtonEditor(new JCheckBox(), "Modificar"));
 
-        table.getColumn("Delete").setCellRenderer(new ButtonRenderer());
-        table.getColumn("Delete").setCellEditor(new ButtonEditor(new JCheckBox(), "Delete"));
+        table.getColumn("Borrar").setCellRenderer(new ButtonRenderer());
+        table.getColumn("Borrar").setCellEditor(new ButtonEditor(new JCheckBox(), "Borrar"));
 
         add(new JScrollPane(table), BorderLayout.CENTER);
 
         // --- PANEL SUPERIOR ---
         JPanel inputPanel = new JPanel(new FlowLayout());
-        inputPanel.add(new JLabel("New Contact Name:"));
+        // inputPanel.add(new JLabel("Nuevo nombre de contacto: "));
         nameField = new JTextField(20);
-        JButton btnAdd = new JButton("Add Contact");
+        JButton btnAdd = new JButton("Agregar Contacto");
 
-        inputPanel.add(nameField);
+        // inputPanel.add(nameField);
         inputPanel.add(btnAdd);
         add(inputPanel, BorderLayout.NORTH);
 
@@ -65,23 +65,12 @@ public class ContactTableApp extends JFrame {
 
         // --- LÓGICA AGREGAR ---
         btnAdd.addActionListener(e -> {
-            String name = nameField.getText().trim();
 
-            if (name.isEmpty()) return;
+            // 2. Cerrar esta ventana de bienvenida
 
-            if (tableModel.getRowCount() >= maxContacts) {
-                JOptionPane.showMessageDialog(this, "List is FULL (Max " + maxContacts + ")");
-                return;
-            }
+            // 3. Abrir la app principal pasándole el tamaño
+            new AddContact().setVisible(true);
 
-            if (contactExists(name)) {
-                JOptionPane.showMessageDialog(this, "Name already exists.");
-                return;
-            }
-
-            tableModel.addRow(new Object[]{name, "Edit", "Delete"});
-            nameField.setText("");
-            updateStatus();
         });
 
         updateStatus();
