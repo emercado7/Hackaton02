@@ -11,6 +11,8 @@ public class ContactManager extends JFrame {
     private ArrayList<String> contacts;
     private Agenda agenda;
     private final int MAX_CONTACTS = 10;
+
+    private SearchService searchService = new SearchService();
     private Pattern pattern = Pattern.compile("^\\d{10}$");
 
     // GUI Components
@@ -112,6 +114,15 @@ public class ContactManager extends JFrame {
         btnList.addActionListener(e -> listContacts());
 
         // 3. SEARCH CONTACT
+        //----Conecta con el método de buscaContacto()----
+        btnSearch.addActionListener(e -> {
+            String name = nameField.getText();
+            String result = searchService.buscaContacto(contacts, name);
+            displayArea.setText(result);
+        });
+
+        //Lo que estaba primero en el codigo de borrador:
+        /*
         btnSearch.addActionListener(e -> {
             String name = nameField.getText().trim();
             if (contacts.contains(name)) {
